@@ -45,10 +45,10 @@ router.route("/").get((req, res)=>{
 
 //UPDATE Student Details - PUT
 
-router.route("/").post((req, res) => {
+router.route("/").put(async (req, res) => {
 
     //tree structure
-    let userId = re.body.id;
+    let userId = res.params.id;
     const {name, age, gender} = req.body;
 
     const updateStudent = {
@@ -66,6 +66,19 @@ router.route("/").post((req, res) => {
     })
    
 
+})
+
+//Delete Student
+router.route("/delete/:id").delete(async (req, res) => {
+    let userId = req.params.id;
+
+    //we use await keyword to wait untill providing the promise
+    await Student.findByIdAndDelete(userId).then(()=>{
+        res.status(200).send({status: "User Deleted!"});
+    }).catch((err)=>{
+        console.log(err.message);
+        res.status(500).send({status:"Error with Delete Student", error:err.message});
+    })
 })
 
 module.exports = router;
