@@ -43,5 +43,29 @@ router.route("/").get((req, res)=>{
     })
 })
 
+//UPDATE Student Details - PUT
+
+router.route("/").post((req, res) => {
+
+    //tree structure
+    let userId = re.body.id;
+    const {name, age, gender} = req.body;
+
+    const updateStudent = {
+        name,
+        age,
+        gender
+    }
+
+    const update = await Student.findByIdAndUpdate(userId, updateStudent)
+        .then(()=>{
+            res.status(200).send({status: "User updated", user: update})
+    }).catch((err)=>{
+        console.log(err);
+        res.status(500).send({status:"Error with updating data"});
+    })
+   
+
+})
 
 module.exports = router;
