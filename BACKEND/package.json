@@ -7,16 +7,11 @@
     "start": "node server.js",
     "dev": "nodemon server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/IsuruRaveen20/Student-CRUD-App-MERN.git"
-  },
   "author": "Isuru Raveen",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/IsuruRaveen20/Student-CRUD-App-MERN/issues"
+   
   },
-  "homepage": "https://github.com/IsuruRaveen20/Student-CRUD-App-MERN#readme",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
