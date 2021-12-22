@@ -3,7 +3,7 @@ const router = require("express").Router();
 let Student = require("../models/student");
 
 
-//Create Student 
+//Create Student - POST
 router.route("/add").post((req, res) => {
     
     const name = req.body.name;
@@ -28,5 +28,20 @@ router.route("/add").post((req, res) => {
         console.log(err);
     })
 })
+
+//Read All Students - GET
+router.route("/").get((req, res)=>{
+    
+    Student.find()
+        //if success
+        .then((students)=>{
+        res.json(students)
+    })
+        //not success
+    .catch((err) => {
+        console.log(err);
+    })
+})
+
 
 module.exports = router;
