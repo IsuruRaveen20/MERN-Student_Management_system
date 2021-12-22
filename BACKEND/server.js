@@ -2,7 +2,7 @@ const express = require ("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const dotenv = require("dotenv");
+// const dotenv = require("dotenv");
 const app = express();
 require ("dotenv").config();
 
@@ -34,3 +34,6 @@ connection.once("open", ()=> {
 app.listen(PORT, () => {
     console.log(`Server is up and running on port ${PORT}`);
 }) 
+
+const studentRouter = require("./routes/students");
+app.use("/students", studentRouter);
